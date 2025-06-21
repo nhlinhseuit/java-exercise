@@ -19,13 +19,6 @@ services:
       timeout: 5s
       retries: 5
 
-  adminer:
-    image: adminer:latest
-    ports:
-      -
-    networks:
-      - app-network
-
 volumes:
   postgres_data:
     name: postgres_data
