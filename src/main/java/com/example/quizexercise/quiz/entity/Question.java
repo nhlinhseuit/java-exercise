@@ -22,7 +22,7 @@ public class Question {
   private String content;
 
   @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "question")
-  private List<Option> options;
+  private List<Option> optionList;
 
   @ManyToOne()
   @JoinColumn(name = "quiz_id")

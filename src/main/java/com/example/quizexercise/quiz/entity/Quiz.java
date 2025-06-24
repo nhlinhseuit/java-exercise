@@ -1,6 +1,7 @@
 package com.example.quizexercise.quiz.entity;
 
 import com.example.quizexercise.submission.entity.Submission;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,11 +23,9 @@ public class Quiz {
 
   private String content;
 
-  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  @JoinColumn(name = "question_id")
-  private List<Question> questions;
+  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "quiz")
+  private List<Question> questionList;
 
-  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-  @JoinColumn(name = "submission_id")
-  private List<Submission> submissions;
+  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "quiz")
+  @Nullable private List<Submission> submissionList;
 }

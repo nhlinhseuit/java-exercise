@@ -32,5 +32,5 @@ public class Submission {
   private Quiz quiz;
 
   @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "submission")
-  private List<Answer> answers;
+  private List<Answer> answerList;
 }
