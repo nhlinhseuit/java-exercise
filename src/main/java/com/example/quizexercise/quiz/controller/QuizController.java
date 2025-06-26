@@ -1,8 +1,10 @@
 package com.example.quizexercise.quiz.controller;
 
 import com.example.quizexercise.quiz.controller.dto.request.CreateQuizRequestDto;
+import com.example.quizexercise.quiz.controller.dto.request.DeleteQuizRequestDto;
 import com.example.quizexercise.quiz.controller.dto.request.GetQuizListRequestDto;
 import com.example.quizexercise.quiz.controller.dto.response.CreateQuizResponseDto;
+import com.example.quizexercise.quiz.controller.dto.response.DeleteQuizResponseDto;
 import com.example.quizexercise.quiz.controller.dto.response.GetQuizResponseDto;
 import com.example.quizexercise.quiz.service.QuizService;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -28,5 +30,11 @@ public class QuizController {
   public CreateQuizResponseDto createQuiz(
       @RequestBody CreateQuizRequestDto createQuizListRequestDto) {
     return quizService.createQuiz(createQuizListRequestDto);
+  }
+
+  @DeleteMapping
+  public DeleteQuizResponseDto deleteQuiz(
+      @RequestBody DeleteQuizRequestDto deleteQuizListRequestDto) {
+    return quizService.deleteQuiz(deleteQuizListRequestDto);
   }
 }
