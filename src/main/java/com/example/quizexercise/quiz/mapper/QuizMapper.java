@@ -14,7 +14,7 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface QuizMapper {
 
-  //! Mapping for Get ALL API
+  // ! Mapping for Get ALL API
 
   // MapStruct sẽ xử lý Quiz → GetQuizResponseDto
   @Mapping(
@@ -25,15 +25,15 @@ public interface QuizMapper {
   // Các hàm thủ công dùng default
   default QuestionResponseDto toDto(Question question) {
     return new QuestionResponseDto(
-        question.getContent(), question.getOptionList().stream().map(this::toDto).toList());
+        question.getId(),
+        question.getContent(),
+        question.getOptionList().stream().map(this::toDto).toList());
   }
 
   default OptionResponseDto toDto(Option option) {
-    return new OptionResponseDto(option.getContent());
+    return new OptionResponseDto(option.getId(), option.getContent());
   }
 
-
-  //! Mapping for Crate quiz API
+  // ! Mapping for Crate quiz API
   CreateQuizResponseDto toCreateQuizDto(Quiz quiz);
-
 }

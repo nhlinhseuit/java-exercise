@@ -4,5 +4,5 @@ import java.util.List;
 import lombok.Builder;
 
 @Builder
-public record QuestionResponseDto(
+public record QuestionResponseDto(String id,
 String content, List<OptionResponseDto> optionList) {}

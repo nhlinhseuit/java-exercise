@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "quizs")
@@ -23,9 +24,14 @@ public class Quiz {
 
   private String content;
 
-  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "quiz")
+  @OneToMany(
+      fetch = FetchType.EAGER,
+      cascade = CascadeType.ALL,
+      mappedBy = "quiz",
+      orphanRemoval = true)
   private List<Question> questionList;
 
   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "quiz")
-  @Nullable private List<Submission> submissionList;
+  @Nullable
+  private List<Submission> submissionList;
 }

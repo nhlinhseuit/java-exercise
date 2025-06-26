@@ -5,6 +5,6 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public record GetQuizResponseDto(
+public record GetQuizResponseDto(String id,
     String content, List<QuestionResponseDto> questionList) {
 }
