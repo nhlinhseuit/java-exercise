@@ -1,8 +1,10 @@
 package com.example.quizexercise.quiz.service;
 
 import com.example.quizexercise.quiz.controller.dto.request.CreateQuizRequestDto;
+import com.example.quizexercise.quiz.controller.dto.request.DeleteQuizRequestDto;
 import com.example.quizexercise.quiz.controller.dto.request.GetQuizListRequestDto;
 import com.example.quizexercise.quiz.controller.dto.response.CreateQuizResponseDto;
+import com.example.quizexercise.quiz.controller.dto.response.DeleteQuizResponseDto;
 import com.example.quizexercise.quiz.controller.dto.response.GetQuizResponseDto;
 import com.example.quizexercise.quiz.entity.Option;
 import com.example.quizexercise.quiz.entity.Question;
@@ -68,4 +70,12 @@ public class QuizService {
 
     return quizDto;
   }
+
+    public DeleteQuizResponseDto deleteQuiz(DeleteQuizRequestDto deleteQuizListRequestDto) {
+      quizRepository.deleteById(deleteQuizListRequestDto.getQuizId());
+
+      return DeleteQuizResponseDto.builder()
+              .message("Deleted quiz id " + deleteQuizListRequestDto.getQuizId())
+              .build();
+    }
 }
