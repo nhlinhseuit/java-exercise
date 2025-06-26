@@ -2,6 +2,7 @@ package com.example.quizexercise.quiz.controller;
 
 import com.example.quizexercise.quiz.controller.dto.request.CreateQuizRequestDto;
 import com.example.quizexercise.quiz.controller.dto.request.GetQuizListRequestDto;
+import com.example.quizexercise.quiz.controller.dto.request.UpdateQuizRequestDto;
 import com.example.quizexercise.quiz.controller.dto.response.CreateQuizResponseDto;
 import com.example.quizexercise.quiz.controller.dto.response.GetQuizResponseDto;
 import com.example.quizexercise.quiz.service.QuizService;
@@ -28,5 +29,10 @@ public class QuizController {
   public CreateQuizResponseDto createQuiz(
       @RequestBody CreateQuizRequestDto createQuizListRequestDto) {
     return quizService.createQuiz(createQuizListRequestDto);
+  }
+
+  @PutMapping("/{quizId}")
+  public GetQuizResponseDto updateQuiz(@PathVariable("quizId") String quizId ,@RequestBody UpdateQuizRequestDto updateQuizListRequestDto) {
+    return quizService.updateQuiz(quizId, updateQuizListRequestDto);
   }
 }
