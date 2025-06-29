@@ -34,13 +34,13 @@ public class QuizController {
 
   @GetMapping("/{quizId}")
   @Operation(
-          summary = "Lấy thông tin bài quiz theo ID",
-          description = "Trả về nội dung bài quiz và danh sách câu hỏi kèm theo các phương án lựa chọn dựa trên ID của quiz."
+          summary = "Get quiz by id",
+          description = "Return the quiz and question list based on quiz id, each question has option list."
   )
   @ApiResponses(value = {
-          @ApiResponse(responseCode = "200", description = "Lấy quiz thành công"),
-          @ApiResponse(responseCode = "404", description = "TEMP: Không tìm thấy quiz với ID được cung cấp"),
-          @ApiResponse(responseCode = "500", description = "TEMP: Lỗi hệ thống")
+          @ApiResponse(responseCode = "200", description = "Success"),
+          @ApiResponse(responseCode = "404", description = "TEMP: Quiz id not found"),
+          @ApiResponse(responseCode = "500", description = "TEMP: Internal error")
   })
   public GetQuizResponseDto getQuiz(@PathVariable("quizId") String quizId) {
     return quizService.getQuiz(quizId);
