@@ -61,11 +61,20 @@ public class QuizService {
     quiz.setQuestionList(createQuizListRequestDto.getQuestionList());
 
     // Lưu quiz, đồng thời cascade lưu hết question và option:
-      // Vi quiz co cascade toi question, question co cascade toi option
+    // Vi quiz co cascade toi question, question co cascade toi option
     Quiz savedQuiz = quizRepository.save(quiz);
 
     CreateQuizResponseDto quizDto = quizMapper.toCreateQuizDto(savedQuiz);
 
     return quizDto;
+  }
+
+  public GetQuizResponseDto getQuiz(String quizId) {
+    Quiz quiz =
+        quizRepository
+            .findById(quizId)
+            .orElseThrow(() -> new RuntimeException("Quiz not found"));
+
+    return quizMapper.toDto(quiz);
   }
 }
